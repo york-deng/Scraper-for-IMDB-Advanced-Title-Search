@@ -1,0 +1,65 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shortcut Instructions here</title>
+    <style type="text/css">
+      body {
+        margin: 55;
+        white-space: nowrap;
+      }
+      h1 {
+        font-size: 15px;
+      }
+
+      #container {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      #panel { min-width: 512px; margin: 16px 16px 20px 8px; }
+      #panel h1,h2,h3,h4,h5 { margin: 0; padding: 0; }
+      #panel li { margin: 16px 16px 16px 0; }
+      #panel i { font-size: 18px; font-style: normal; }
+      #panel input[type="text"] { width: 32px; }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+    -->
+    <script type="text/javascript" src="xlsx.full.min.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
+  </head>
+
+  <body>
+    <div id="panel">
+        <h3>Follow the steps as below:</h3>
+        <p style="padding: 0 0 0 38px;">
+            <label><input id="withoutImage" type="checkbox" value="true" checked="checked"/>Block images for better performance</label>
+        </p>
+        <ul>
+            <li>
+                <div><i>①</i> <label>Open the IMDB <a href="https://www.imdb.com/search/title/">Advanced Title Search</a> page by clicking </label> <button id="entry">Go</button></div>
+            </li>
+            <li>
+                <div><i>②</i> <label>Do searching in <a href="https://www.imdb.com/search/title/">Advanced Title Search</a> page</label></div>
+            </li>
+            <li>
+                <div><i>③</i> <label>Start scraping total <input id="limit" type="text" value="50" /> search results and detail pages</label> <button id="start" disabled="disabled">Start</button> <label id="progress">(0.0%, used 0.0 minutes)</label></div>
+            </li>
+            <li>
+                <div><i>④</i> <label>Download the Excel file (<input id="latestOnly" type="checkbox" value="true" checked="checked"/>include the latest data only)</label> <button id="download" disabled="disabled">Download</button></div>
+            </li>
+        </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+{
+  "manifest_version": 2,
+  "name": "Scraper for IMDB Advanced Title Search.",
+  "description": "Allows user to scrape data in IMDB Advanced Title Search.",
+  "version": "1.0",
+
+  "permissions": [
+    "activeTab",
+	  "tabs",
+    "webRequest",
+    "webNavigation",
+    "webRequestBlocking",
+    "proxy",
+		"*://*/*",
+    "declarativeContent",
+    "storage",
+    "unlimitedStorage"
+  ],
+
+  "icons" : {
+    "32" : "icon-32.png"
+  },
+  
+  "page_action" : {
+    "default_icon" : "icon-16.png",
+    "default_title": "Click here!",
+	  "default_popup": "popup.html"
+  },
+
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": true
+	},
+	
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content_script.js"]
+    }
+  ]
+}
